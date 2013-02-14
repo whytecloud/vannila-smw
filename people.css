@@ -1,0 +1,381 @@
+/*	-------------------------------------------------------------
+	Soul-Scape style for People
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	Description:		Base Stylesheet
+	Filename:		people.css
+	Version:		1.1.1
+	Last Updated:		27th July, 2006
+	Works up to Revision:	442
+	Author:			Ben
+	Author URL:		http://www.soul-scape.com/
+	-------------------------------------------------------------
+
+	Largely based upon the default Vanilla styles by Mark O'Sullivan
+
+	-------------------------------------------------------------		*/
+	
+
+
+
+
+
+
+
+/* Global Definitions */  
+body { 
+	margin:0px;
+	padding:0px;
+	background: url(bg.gif) repeat-x;
+	text-align: center;
+	}
+
+body, div, input, textarea, select {
+	font-family: Trebuchet MS, Verdana, Tahoma, Arial;
+	font-size: 12px;
+	color: #111;
+	}
+
+input {
+	font-family: arial;
+	color:#000;
+	}
+
+a, a:link, a:visited {
+	color: #3354AA;
+	text-decoration: none;
+	}
+
+a:hover {
+	color: #4B6DB7;
+	text-decoration: none;
+	background:#ffb;
+	}
+
+.ErrorContainer {
+	background: url(alert.gif) no-repeat top left #FFEDEF;
+	border-top: 1px solid #FFC2CA;
+	border-bottom: 1px solid #FFC2CA;
+	padding: 10px 9px 9px 9px;
+	color: #c00;
+	margin: 0px 0px 6px 0px !important;
+	}
+
+.ErrorTitle {
+	font-weight: bold;
+	color: #c00;
+	font-size: 12px;
+	margin-bottom: 6px;
+	padding-left: 18px;
+	}
+
+.Error {
+	color: #c00;
+	font-size: 12px;
+	}
+	
+.SiteContainer {
+	margin-top: 93px;
+	padding:0px;
+	background: transparent;
+	}
+
+.SiteContainer,
+.Foot {
+	text-align: left;
+	margin-left: auto;
+	margin-right: auto;
+	}
+
+/* Various page widths */
+  
+.SignIn { width: 280px; }
+.PasswordRequest { width: 520px; }
+.PasswordRequest .PageTitle{ width: 492px; }
+.SignOut { width: 400px; }
+.Apply { width: 592px; }
+.PasswordReset { width: 550px; }
+
+/* Banner */
+  
+h1 {
+	line-height:30px;
+	text-align: center;
+	background: transparent;
+	padding: 0px 0px 26px 0px;
+	margin:0px;
+	}
+
+
+h1, h1 a {
+	font-size: 24px;
+	font-weight: bold;
+	color: #fff;
+	text-decoration: none;
+	}
+
+h1 strong {
+	font-weight: bold;
+	color: #5688b8;
+	}
+	
+/* About Paragraphs */
+
+.About {
+	margin: 8px 0px 0px 0px;
+	padding: 0px 8px 0px 12px;
+	width: 260px;
+	position: absolute;
+	}
+.About h2 {
+	font-size: 14px;
+	font-weight: bold;
+	margin: 0px;
+	padding: 0px;
+	color:#000;
+	}
+.About p {
+	margin: 0px;
+	padding: 2px 0px 6px 0px;
+	color:#000;
+	line-height: 150%;
+	}
+.About p strong {
+	font-weight: normal;
+	text-decoration:underline;
+	color:#000;
+	}
+
+/* Forms */
+  
+fieldset {
+	border: 0px;
+	margin: 6px;
+	padding: 3px 6px 6px 6px;
+
+	}
+legend {
+	font-size:14px;
+	font-weight: bold;
+	color:#000;
+	}
+fieldset p {
+	margin: 0px;
+	padding: 0px 2px 8px 2px;
+	color: #333;
+	}
+#Form form {
+	background: #f3f3f3;
+	margin: 0px;
+	padding: 10px 5px 10px 10px;
+	}
+
+#Form ul,
+#Form ul li {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	}
+#Form ul li {
+	padding-bottom:6px;
+	}
+#Form label {
+	text-align: right;
+	display: block;
+	width: 35%;
+	float: left;
+	margin-right: 8px;
+	color: #000;
+	}
+#Form input {
+	width: 50%;
+	}
+#Form .Submit {
+	clear: left;
+	padding: 6px 0px 0px 88px;
+	text-align: left;
+	}
+#Form .Button {
+	width: auto;
+	cursor: pointer;
+	}
+	
+/* Sign-In Page */
+
+#Form.SignInForm form {
+	border:1px solid #ccc;
+	}
+#Form.SignInForm fieldset {
+	padding: 0px 0px 0px 0px;
+	margin:0px;
+	}
+
+.SignIn .ErrorContainer {
+margin: 0px 0px 10px 0px !important;}
+
+#Form.SignInForm .Submit {
+	padding: 6px 0px 0px 0px;
+	clear: left;
+	text-align: center;
+	}
+#Form #RememberMe label {
+	width: auto;
+	padding-left: 95px;
+	text-align: left;
+	font-size: 12px;
+	}
+#Form #RememberMe input {
+	width: auto;
+	}
+.MembershipOptionLinks {
+	background: #ffd;
+	border:1px solid #E3C7AC;
+	margin: 10px 0px 0px 0px !important;
+	padding: 4px 0px 0px 6px !important;
+	}
+.MembershipOptionLinks li {
+	width: 132px;
+	overflow: hidden;
+	white-space: nowrap;
+	padding: 0px;
+	margin: 0px;
+	}
+.MembershipOptionLinks a,
+.MembershipOptionLinks a:link,
+.MembershipOptionLinks a:visited {
+	display: block;
+	background: #ffd;
+	color:#c96;
+	text-decoration: none;
+	text-align: center;
+	padding: 3px 0px 3px 0px;
+	font-size:12px;
+	}
+.MembershipOptionLinks a:hover {
+	background:#ffc;
+	color:#c90;
+	text-decoration: none;
+	}
+.ForgotPasswordLink {
+	position: absolute;
+	z-index:100;
+	}
+.ApplyForMembershipLink {
+	padding-left: 136px !important;
+	}
+	
+/* Password Request Form */
+
+.PasswordRequestForm .ErrorContainer {
+	margin: 0px;
+	}
+.PasswordRequest .About {
+	width: 234px;
+	}
+.PasswordRequestForm {
+	padding: 0px 0px 0px 247px;
+	}
+
+.PasswordRequest #Form form {
+	border:1px solid #ccc;
+	}
+	
+/* Apply Form */
+#Form.ApplyForm {
+	padding: 0px 0px 0px 282px;
+	}
+
+#Form #ApplicationForm {
+	border:1px solid #ccc;
+	}
+
+.Apply .ErrorContainer {
+	margin: 0px;
+	}
+div.Apply #Form {
+	height: 300px;
+	}
+html>body div.Apply #Form { /* ugly hack, but fixes display error in IE. */
+	min-height: 322px;
+	height: auto;
+	}
+#Form.ApplyForm .Submit {
+	padding-left: 104px;
+	}
+#Form.ApplyForm label {
+	width: 98px;
+	}
+#Form.ApplyForm input {
+	width: 140px;
+	}
+#Form.ApplyForm .Submit input {
+	width:auto !important;
+	}
+#TermsOfServiceCheckBox input {
+	width: auto !important;
+	}
+#TermsOfServiceCheckBox {
+	font-size: 12px;
+	color: #000;
+	}
+#TermsOfServiceCheckBox a {
+	text-decoration: underline;
+	}
+	
+/* Password Reset Form */
+
+#Form.PasswordResetForm .ErrorContainer {
+	margin: 0px;
+	}
+#Form.PasswordResetForm .Submit {
+	padding-left:100px;
+	}  
+.PasswordReset .About {
+	width: 254px;
+	}
+#Form.PasswordResetForm {
+	padding: 0px 0px 0px 267px;
+	}
+  
+/* Form Complete */
+  
+.FormComplete {
+	padding: 8px 16px 16px 16px;
+	}
+.FormComplete h2 {
+	font-size: 14px;
+	font-weight: bold;
+	margin: 0px;
+	padding: 0px 0px 6px 0px;
+	color:#000;
+	}
+.FormComplete ul {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	}
+.FormComplete ul li {
+	margin: 0px;
+	padding: 0px;
+	color:#000;
+	}
+.FormComplete ul li strong {
+	font-weight: normal;
+	color:#e00;
+	}
+
+/* Foot */
+	
+.Foot {
+	margin-top:6px;
+	color: #bbb;
+	text-align: center;
+	font-size: 10px;
+	}
+.Foot a {
+	color: #bbb;
+	}
+.Foot a:hover {
+	color: #5688b8;
+	background: none;
+	}
+	

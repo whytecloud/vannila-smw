@@ -1,0 +1,1682 @@
+<?php 
+	// Basic protection against thiefs.
+	 	/* if($_SERVER['uri'] = "style.php") die("You can't view this file directly."); */
+	 
+	// First we make the file header a css file
+	header("Content-type: text/css");
+	
+	// Now we set mario's position in the title bar.
+		// To do this we get the variables of the day the user views the sheet and the time.
+			$getDate = date(D);
+			$getTime = date(h);
+			$getAmPm = date(a);
+			
+		// Now lets see what mario will be wearing.
+			$SpriteLine = Array(
+				"01" > "smallMario",
+				"02" > "bigMario",
+				"03" > "starMario",
+				"04" > "capeMario");
+			
+			$usedSprite = rand(0,4);
+			
+		// Now its time for the code that sets the current world to load.
+			
+			if($getDate = "Mon")
+				{
+						$marioWorld = "Worldone";
+				}
+			elseif($getDate = "Tue")
+				{
+						$marioWorld = "Worldtwo";
+				}
+			elseif($getDate = "Wed")
+				{
+						$marioWorld = "Worldthree";
+				}
+			elseif($getDate = "Thu")
+				{
+						$marioWorld = "Worldfour";
+				}
+			elseif($getDate = "Fri")
+				{
+						$marioWorld = "Worldfive";
+				}
+			elseif($getDate = "Sat")
+				{
+						$marioWorld = "Worldsix";
+				}
+			elseif($getDate = "Sun")
+				{
+						$marioWorld = "Worldseven";
+				}
+			else $marioWorld = "Worldone"; //Should never be true [imagine if it was?!] but its best to have a fallback.
+			
+			// Now, Where will mario be on the world? closer to the end or the start?
+				/*if($getAmPm = "am")
+					{*/
+							if($getTime = "01")
+								{
+									$place = "pixelValue";
+								}
+							elseif($getTime = "02")
+								{
+									$place = "pixelValue";
+								}
+							elseif($getTime = "03")
+								{
+									$place = "pixelValue";
+								}
+							elseif($getTime = "04")
+								{
+									$place = "pixelValue";
+								}
+							elseif($getTime = "05")
+								{
+									$place = "pixelValue";
+								}
+							elseif($getTime = "06")
+								{
+									$place = "pixelValue";
+								}
+							elseif($getTime = "07")
+								{
+									$place = "pixelValue";
+								}
+							elseif($getTime = "08")
+								{
+									$place = "pixelValue";
+								}
+							elseif($getTime = "09")
+								{
+									$place = "pixelValue";
+								}
+							elseif($getTime = "10")
+								{
+									$place = "pixelValue";
+								}
+							elseif($getTime = "11")
+								{
+									$place = "pixelValue";
+								}
+							elseif($getTime = "12")
+								{
+									$place = "pixelValue";
+								}
+							else $place = "debugPixelValue";
+					/*}*/
+					
+?>
+
+/*	-------------------------------------------------------------
+	Super Mario World Style for Vanilla
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	Description:	Base Stylesheet
+	Filename:		vanilla.css
+	Version:		2.0.0
+	Last Updated:	16th, February 2006
+	Based on:		Soulscape
+	Author:			whytecloud
+	Author URL:		http://www.whytecloud.podsarcade.co.uk
+	
+		ChangeLog;
+        	28th July, 2009 --
+            	Made it awesome, more so that a robot ninja punching god in the dick.
+			09th March, 2008 --
+				Fixed the Navigation bar floating too high.
+	-------------------------------------------------------------
+
+	Largely based upon the Soulscape style by ben.
+
+	-------------------------------------------------------------		*/
+
+body {
+	margin:0px;
+	padding:0px;
+	background:#fff url('fader.png') top left repeat-y;
+	}
+body, div, table, td {
+	font-family:'Trebuchet MS', 'Verdana', 'Tahoma', 'Arial', sans-serif;
+	font-size:12px;
+	color:#062971;
+	}
+#Body {
+	background:url(bg-fade.jpg) 0px 0px repeat-x transparent;
+	}
+
+		/* Hide from IE5-mac. Only IE-win sees this.\*/
+ 
+			* html body #Body {
+				background:url(bg-fade.jpg) 0px -1px repeat-x transparent; }
+ 
+		/* End hide from IE5/mac */
+a {
+	color: #3354AA;
+	text-decoration: underline;
+	cursor: pointer;
+	}
+a:hover {
+	color: #4B6DB7;
+	text-decoration: none;
+	}
+#pgbottom {
+	text-decoration: none !important;
+	height: 1px;
+	width: 1px;
+	font-size: 1px;
+	}
+	
+/* Errors & Success */
+.ErrorContainer {
+	background: url(alert.gif) no-repeat top left #FFEDEF;
+	border-top: 1px solid #FFC2CA;
+	padding: 10px 10px 10px 27px !important;
+	overflow: hidden;
+	}
+.ErrorTitle {
+	font-weight: bold;
+	color: #c00 !important;
+	}
+.Error {
+	color: #c00 !important;
+	}
+#Success {
+	border-top: 1px solid #9C9;
+	border-bottom: 1px solid #9C9;
+	background: #E2F9E3;
+	color: #060 !important;
+	display: block;
+	line-height: 200%;
+	text-align: center;
+	font-size: 13px;
+	margin-bottom: 10px !important;
+	}
+.Notice {
+	background: url(notice.gif) left center no-repeat #FFFECC;
+	border: 1px solid #FAEBB1;
+	font-size:13px;
+	padding: 8px 8px 8px 30px;
+	margin-bottom: 20px;
+	color: #D57D00;
+	line-height: 150%;
+	}
+	
+/* Remove System Message Button */
+.Notice span {
+	float:right;
+	display: block;
+	font-size: 11px;
+	}
+.Notice span a,
+.Notice span a:link,
+.Notice span a:visited,
+.Notice span a:hover {
+	color: #f60;
+	}
+.Invisible { display: none; }
+	
+/* Session.. */
+
+#Session {
+	width:100%;
+	position:absolute;
+	top:8px;
+	right:10px;
+	text-align:right;
+	font-size:11px;
+	color:#5688b8;
+	}
+#Session a {
+	color:#5688b8;
+	text-decoration:none;
+	}
+#Session a:hover {
+	color:#fff;
+	}
+
+/* Header.. */
+
+#Header {
+	background: url(bg.png) repeat-x left top #FFF;
+	border-top:1px solid #0C2F5A;
+	height:137px;
+	}
+#Header * {
+	margin:0px;
+	padding:0px;
+	}
+#Header h1 {
+	text-align:center;
+	color:#000;
+	font-size:24px;
+	line-height:27px;
+	margin:72px 0px 18px 0px;
+	cursor:default;
+	}
+#header h1 strong {
+	color:#000000;
+	}
+#header h1 strong strong {
+	color:#000000;
+	}
+#Header h1 a,
+#Header h1 a:hover,
+#Header h1 a:visited,
+#Header h1 a:active {
+	color:#fff;
+	text-decoration:none;
+	}
+#Header h1 strong,
+#Header h1 a strong,
+#Header h1 a:hover strong,
+#Header h1 a:visited strong,
+#Header h1 a:active strong {
+	color:#5688b8;
+	}
+#Header ul {
+	margin-top: -6px;
+	line-height:18px;
+	text-align:center;
+	}
+#Header ul li {
+	display:inline;
+	margin: 0px 1px 0px 0px;
+	border-bottom:1px solid #fff;
+	}
+#Header ul li.TabOn {
+	background-color:#ddd;
+	font-weight:bold;
+	}
+#Header ul li a {
+	padding:2px 7px;
+	font-size:12px;
+	text-decoration:none;
+	background-color:#0C2F5A;
+	color:#fff;
+	}
+#Header ul li a:hover {
+	background-color:#123C67;
+	}
+#Header ul li.TabOn a,
+#Header ul li.TabOn a:hover {
+	background-color:#ddd;
+	border:1px solid #fff;
+	border-bottom:1px solid #ddd;
+	border-right:1px solid #ddd;
+	color:#000000;
+	}
+#Header ul li a em {
+	font-style:normal;
+	text-decoration:underline;
+	}
+
+/* Panel.. */
+
+#Panel {
+	width:201px;
+	margin-top:22px;
+	margin-left:18px;
+	float:left;
+	display: inline;
+	}
+#Panel * {
+	margin:0px;
+	padding:0px;
+	list-style:none;
+	}
+#Panel h1 {
+	margin-top:20px;
+	font-size:14px;
+	}
+#Panel h1 {
+	margin-top:20px;
+	margin-right:20px;
+	font-size:14px;
+	text-align:center;
+	}
+#Panel h1 a {
+	display: block;
+	padding:3px;
+	color: #c00;
+	border: 1px solid #ddd;
+	background: #fff;
+	text-decoration: none;
+	font-size:14px;
+	}
+#Panel h1 a:hover {
+	color:#f00;
+	background-color: #fff3f3;
+	border: 1px solid #ff5555;
+	}
+#Panel h2 {
+	color:#000;
+	font-size:11px;
+	border-bottom:1px solid #ccc;
+	margin:10px 0px 3px 0px;
+	padding:0px;
+	text-indent: 4px;
+	width:180px;
+	}
+#Panel ul ul, #Panel ul p, #Panel select {
+	margin:0px 4px;
+	}
+#Panel ul, #Panel p {
+	color:#335eb7;
+	font-size:11px;
+	}
+#Panel ul ul {
+	color:#f00;
+	font-size:10px;
+	}
+#Panel select {
+	width:167px;
+	margin-top:3px;
+	}
+#Panel ul ul li {
+	width:173px;
+	margin-bottom:3px;
+	overflow: hidden;
+	}
+#Panel ul ul li a {
+	font-size:11px;
+	display:block;
+	width:100%;
+	color:#335eb7;
+	text-decoration:none;
+	}
+#Panel ul ul li a span {
+	color: #c00;
+	font-size: 10px;
+	padding-left: 4px;
+	}
+#Panel ul ul li a:hover {
+	background-color:#ffc;
+	}
+#AboutVanilla {
+	margin: 20px 0px 20px 0px !important;
+	border-top:1px solid #ccc;
+	background-color:#f9f9f9;
+	padding: 3px 0px 3px 0px;
+	text-align:center;
+	color:#ddd !important;
+	width:180px;
+	}
+	
+#AboutVanilla:after { content: " Super Mario World Design by Aron.Booth"; }
+
+#AboutVanilla a {
+	color:#d0d0d0 !important;
+	text-decoration:none;
+	}
+#AboutVanilla a:hover {
+	color:#aaa !important;
+	text-decoration:underline;
+	}
+
+/* Content.. */
+
+#Content {
+	margin:0px 18px 0px 235px;
+	}
+
+/* ContentInfo/Control/Whatever - Universal to Discussion Index & Comments */
+
+.ContentInfo {
+	text-align:right;
+	}
+.ContentInfo.Top {
+	white-space:nowrap;
+	overflow: hidden;
+	}
+#AccountPage #Content,
+#CommentsPage #Content,
+#DiscussionsPage #Content,
+#CategoryPage #Content {
+	padding-top: 20px;
+	}
+#DiscussionsPage .Bottom {
+	margin: -6px 0px 8px 0px;
+	}
+.ContentInfo * {
+	font-size:14px;
+	font-weight:bold;
+	margin:0px;
+	padding:0px;
+	}
+.ContentInfo h1 {
+	color: #000;
+	}
+#CommentsPage .ContentInfo h1 {
+	float:left;
+	width:60%;
+	overflow:hidden;
+	white-space:nowrap;
+	text-align:left;
+	}
+html>body .ContentInfo h1 { width:80% !important; }
+.ContentInfo input {
+	font-size:10px;
+	margin-left:5px;
+	}
+#DiscussionsPage .ContentInfo h1 {
+	float:none;
+	text-align:left;
+	}
+.ContentInfo h1 a {
+	color:#3354aa;
+	text-decoration:none;
+	}
+.ContentInfo h1 a:hover {
+	color:#000;
+	}
+.ContentInfo a {
+	color:#ccc;
+	text-decoration:none;
+	}
+.ContentInfo a:hover {
+	color:#3354aa;
+	}
+.PageInfo {
+	color:#ccc;
+	border-top:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+	padding:0px 1px;
+	margin:5px 0px;
+	line-height:23px;
+	font-weight:bold;
+	}
+#CommentsPage .ContentInfo.Top .PageInfo{
+		margin:5px 0px 0px 0px !important;
+	}
+.PageInfo p {
+	margin:0px;
+	padding:0px;
+	display:inline;
+	float: left;
+	}
+.PageList {
+	margin:0px;
+	padding:0px;
+	list-style:none;
+	color: #ccc;
+	}
+.PageList li {
+	display:inline;
+	}
+.PageList a,
+.PageList li a {
+	text-decoration:none;
+	color:#3354aa !important;
+	}
+
+/* Discussion Index */
+  
+#PageJump {
+	margin-top: 9px;
+	float: right;
+}
+#Discussions {
+	margin-top:-5px !important;
+	float: left;
+	width: 100%;
+	}	
+#Discussions, #Discussions * {
+	margin:0px;
+	padding:0px;
+	list-style:none;
+	}
+#Discussions li ul {
+	background-color:#fefecc;
+	border-bottom:1px solid #ccc;
+	}
+#Discussions li li {
+	height:auto;
+	border:0px;
+	}
+.NoNewComments,
+#Discussions li.Read ul {
+	background-color:#fffeec !important;
+	}
+.NewComments,
+#Discussions li.Read.NewComments ul {
+	background-color:#fefecc !important;
+	}
+#Discussions li ul {
+	padding: 7px 6px 7px 6px;
+	color:#777;
+	}
+#Discussions ul span, #Discussions ul span a, #Discussions ul a {
+	color:#aaa;
+	text-decoration:none;
+	}
+#Discussions ul span a:hover, #Discussions ul a:hover {
+	color:#f00;
+	}
+#Discussions ul a {
+	color:#777;
+	}
+.Discussion {
+	background: yellow;
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+	width: 100%;
+}
+.DiscussionType {
+	font-size:14px;
+	float:left;
+	margin-right:5px !important;
+	color:#062971;
+	font-weight:bold;
+	line-height:20px;
+	}
+.DiscussionType span,
+.DiscussionType.Normal {
+	display:none;
+	}
+.DiscussionType * {
+	float: left;
+	}
+.DiscussionTopic, .User.Name {
+	font-size:14px;
+	line-height:20px;
+	overflow: hidden;
+	}
+.DiscussionTopic span {
+	display:none;
+	}
+.DiscussionTopic a, .User.Name a {
+	color:#3354aa !important;
+	text-decoration:underline !important;
+	font-weight:bold;
+	}
+.DiscussionTopic a:hover {
+	text-decoration: none !important;
+	}
+.DiscussionCategory, .DiscussionStarted, .DiscussionComments, .DiscussionLastComment, .DiscussionActive, .DiscussionNew {
+	width: auto;
+	display:inline;
+	font-size:10px;
+	margin-right:10px!important;
+	}
+.NewComments .DiscussionNew a {
+	color:#c00 !important;
+	}
+#Discussions li.Read.NewComments .DiscussionNew {
+	display:inline;
+	}
+
+/* Category Index */
+  
+#CategoryPage div.ContentInfo h1 {
+	float: left;
+	text-align: left;
+	width: 100%;
+	padding-bottom:6px;
+	}
+#Categories {
+	margin:0px;
+	padding:0px;
+	list-style:none;
+	border-top: 1px solid #ccc;
+	margin-bottom: 20px;
+	float: left;
+	width: 100%;
+	}
+.BlockedCategory {
+	background: #fff;
+	color:#888 !important;
+	}
+.BlockedCategory .CategoryName a {
+	color:#777 !important;
+	}
+.UnblockedCategory {
+	background: #f5f9ff;
+	}
+#Categories li ul {
+	border-bottom:1px solid #ccc;
+	padding: 7px 6px 7px 6px;
+	list-style: none;
+	margin: 0px;
+	}
+#Categories li li {
+	height:auto;
+	border:0px;
+	}
+#Categories ul span, #Categories ul span a, #Categories ul a {
+	color:#aaaaaa;
+	text-decoration:none;
+	}
+#Categories ul span a:hover, #Categories ul a:hover {
+	color:#f00;
+	}
+#Categories ul a {
+	color:#777;
+	}
+.Category {
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+	width: 100%;
+	}
+.CategoryName {
+	font-size:14px;
+	margin-right:5px !important;
+	color:#062971 !important;
+	font-weight:bold;
+	line-height:20px;
+	}
+.CategoryName a {
+	color: #3354AA !important;
+	text-decoration: underline !important;
+	}
+.CategoryName a:hover {
+	text-decoration: none !important;
+	}
+.CategoryName span,
+.CategoryDescription span,
+.CategoryName.Normal {
+	display:none;
+	}
+.CategoryDescription {
+	font-size:13px;
+	line-height:20px;
+	overflow: hidden;
+	}
+.CategoryDiscussionCount, .CategoryOptions {
+	width: auto;
+	display:inline;
+	font-size:10px;
+	margin-right:10px!important;
+	}
+
+/* Comments.. */
+
+#Comments {
+	margin:0px;
+	padding:0px;
+	list-style:none;
+	}
+#Comments li {
+	margin:0px;
+	padding:10px 0px;
+	border-bottom:1px solid #ccc;
+	}
+#Comments li.Hidden {
+	background: url(hidden-tile.gif) top left repeat-x #fafafa;
+	}
+#Comments .CommentHeader {
+	padding-left: 8px;
+	padding-right: 8px;
+	text-align:right;
+	line-height:32px;
+	}
+#Comments .CommentHeader ul {
+	float:left;
+	margin:0px;
+	padding:0px;
+	list-style:none;
+	}
+#Comments .CommentHeader li {
+	margin:0px;
+	padding:0px;
+	display:inline;
+	color:#aaa;
+	font-size:11px;
+	border-bottom:0px;
+	}
+#Comments .CommentHeader li div.CommentIcon {
+	padding:8px 0px 8px 30px;
+	margin-right: 6px;
+	background-repeat:no-repeat;
+	display: inline;
+	background: #fff center center no-repeat;
+	}
+#Comments .CommentHeader li span {
+	display:none;
+	}
+#Comments .CommentHeader a.WhisperBack {
+	padding-left: 10px;
+	color: #aaa;
+	text-decoration: underline;
+	font-size: 11px;
+	font-weight: normal;
+	}
+#Comments .CommentHeader a.WhisperBack:hover {
+	color: #333;
+	}
+#Comments .CommentHeader em {
+	color:#ccc;
+	font-style:normal;
+	}
+#Comments li.Hidden .CommentHeader i {
+	padding-left: 8px;
+	color:#c00;
+	font-style:normal;
+	}
+#Comments .CommentHeader a {
+	text-decoration:none;
+	font-weight:bold;
+	font-size:14px;
+	color:#3354aa;
+	}
+#Comments .CommentHeader span {
+	font-size:10px;
+	font-weight: normal;
+	color:#aaa;
+}
+#Comments .CommentHeader span a {
+	font-size:10px;
+	font-weight: normal;
+	color:#aaa;
+	margin-left:3px;
+	padding-left:3px;
+	cursor: pointer;
+	text-decoration: underline;
+	}
+#Comments .CommentHeader span a:hover {
+	text-decoration: underline;
+	color: #333;
+	}
+#Comments .CommentNotice {
+	padding: 6px;
+	font-size:13px;
+	text-align: center;
+	border-top: 1px solid #D9999A;
+	border-bottom: 1px solid #D9999A;
+	background: #FEE1E1;
+	color: #850406 !important;
+	margin: 10px 0px 10px 0px;
+	}
+#Comments .CommentBody {
+	display:block;
+	margin: 10px;
+	color:#000;
+	font-size: 13px;
+	line-height: 150%;
+	}
+#Comments .CommentBody ul li,
+#Comments .CommentBody ol li {
+	border-bottom:none;
+	padding:0px;
+	}	
+#CommentsPage .ContentInfo.Middle .PageInfo {
+	border-top: 0px;
+	margin:0px;
+	}
+#CommentsPage .ContentInfo.Bottom {
+	margin-bottom: 20px;
+	}
+#Comments code {
+	border-left: 6px solid #FFFFAA;
+	background: #FFFFEE;
+	padding: 8px;
+	padding-left: 16px;
+	display: block;
+	white-space: pre;
+	}	
+
+/* Search Page */
+
+#Form.Search {
+	width: 99% !important;
+	padding: 20px 0px 0px 0px !important;
+	}
+html>body #Form.Search { /* ugly hack, but fixes display error in IE. */
+	width: 100% !important;
+	}
+#Form.Search fieldset legend {
+	padding: 0px !important;
+	margin-bottom: 6px;
+	}
+#SearchSimple {
+	margin: 0px !important;
+	}
+#SearchSimple label {
+	display: inline !important;
+	width: 10px !important;
+	}
+#MainSearchInput #txtKeywords {
+	width: 60% !important;
+	margin-left: 0px !important;
+	}
+#MainSearchInput label {
+	display: none !important;
+	}
+#Form.Search .Submit input {
+	margin: 0px !important;
+	color: #000 !important;
+	}
+.SearchInput,
+.SearchSelect,
+.SearchSelect option {
+	color: #000 !important;
+	}
+#SimpleSearchRadios input {
+	width: auto !important;
+	margin: 0px 2px 0px 12px;
+	}
+#SimpleSearchRadios label {
+	font-weight: normal !important;
+	}
+.SearchSwitch {
+	display: block;
+	position: absolute;
+	top: 190px;
+	right: 20px;
+	color: #f60 !important;
+	}
+
+/* Advanced Search Form */
+#SearchDiscussionFields, #SearchCommentFields, #SearchUserFields {
+	display: none;
+	}
+.AdvancedSearchInput {
+	width: 60% !important;
+	}
+.AdvancedUserInput,
+#DiscussionAutoCompleteResults,
+#CommentAutoCompleteResults {
+	width: 160px !important;
+	}
+#ddRoles, #ddOrder, #ddCommentCategories, #ddDiscussionCategories {
+	width: auto !important;
+	}
+	
+/* Search Results */
+  
+#SearchPage {
+	margin-bottom: 20px;
+	}
+#SearchPage .ContentInfo h1 {
+	text-align: left !important;
+	}
+#SearchPage .Bottom .PageInfo {
+	margin-top: 0px !important;
+	border-top: 0px !important;
+	}
+
+/* Comment Search Results */
+  
+#CommentResults {
+	margin-top:-5px !important;
+	}
+#CommentResults, #CommentResults * {
+	margin:0px;
+	padding:0px;
+	list-style:none;
+	}
+#CommentResults li li {
+	height:auto;
+	border:0px;
+	}
+#CommentResults li ul {
+	padding: 6px 6px 7px 6px;
+	color:#777;
+	background-color:#fefecc;
+	border-bottom:1px solid #ccc;
+	}
+#CommentResults ul span, #CommentResults ul span a, #CommentResults ul a {
+	color:#aaa;
+	text-decoration:none;
+	}
+#CommentResults ul span a:hover, #CommentResults ul a:hover {
+	color:#f00;
+	}
+#CommentResults ul a {
+	color:#777;
+	}	
+#CommentResults .CommentResult ul {
+	background-color:#fff !important;
+	}
+#CommentResults .CommentText span {
+	display: none;
+	}
+#CommentResults .CommentText span.Highlight {
+	display:inline;
+	color: #f00;
+	background: #ff9;
+	}
+#CommentResults .CommentText {
+	margin:6px 0px 4px 0px !important;
+	}
+#CommentResults .CommentText a {
+	color:#000 !important;
+	}
+#CommentResults .CommentText a:hover {
+	background-color:#ffa;
+	}
+.CommentAuthor, .CommentAdded {
+	width: auto;
+	display:inline;
+	font-size:10px;
+	margin-right:10px!important;
+	}
+/*
+  This is an IE kludge.
+  For some reason IE was adding about 20px of padding to the top of this element
+  and the only way to get rid of it was to add a 1px border to the top.
+*/
+#CommentResults .SearchComment {
+	border-top: 1px solid #fefecc;
+	}
+#CommentResults .SearchComment ul {
+	margin: 0px !important;
+	}
+
+/* User Search Results */
+  
+#UserResults {
+	margin-top:-5px !important;
+	}
+#UserResults, #UserResults * {
+	margin:0px;
+	padding:0px;
+	list-style:none;
+	}
+/*
+  This is an IE kludge.
+  For some reason IE was adding about 20px of padding to the top of this element
+  and the only way to get rid of it was to add a 1px border to the top.
+*/
+#UserResults li {
+	border-top: 1px solid #fff;
+	}
+#UserResults li ul {
+	margin-top: 0px !important;
+	border-bottom:1px solid #ccc;
+	}
+#UserResults li li {
+	height:auto;
+	border:0px;
+	}
+#UserResults li ul {
+	padding: 6px 6px 7px 6px;
+	color:#777;
+	}
+li.User {
+	display:inline;
+	font-size:10px;
+	margin-right:10px !important;
+	}
+li.User span {
+	color: #aaa;
+	}
+li.User.Name {
+	display:block;
+	font-size: 11px;
+	}
+li.User.Name .UserIcon {
+	padding:8px 0px 8px 30px !important;
+	margin-right: 6px !important;
+	background-repeat:no-repeat !important;
+	display: inline !important;
+	background: center center no-repeat;	
+	}
+li.User.Name a {
+	font-size: 14px;
+	}
+li.User.Name.WithIcon {
+	line-height:32px;
+	}
+li.User.Name a:hover {
+	text-decoration: none !important;
+	}
+li.User.Name span {
+	display:none;
+	}
+
+/* Forms.. */
+
+#Form * {
+	margin:0px;
+	padding:0px;
+	list-style:none;
+	}
+#Form {
+	margin-bottom: 10px;
+	}
+#Form fieldset {
+	border:0px;
+	clear:none;
+	margin-bottom: 20px;
+	}
+#Form fieldset legend {
+	padding: 4px 0px 4px 0px;
+	margin: 0px;
+	font-size:14px;
+	font-weight:bold;
+	color:#000;
+	}
+#Form form {
+	margin: 0px;
+	padding:10px 10px 0px 10px;
+	border:1px solid #ffedae;
+	border-left:0px;
+	border-right:0px;
+	background-color:#fef9e9;
+	}
+#Form li {
+	margin-bottom:10px;
+	color:#834300;
+	font-weight:bold;
+	}
+#Form label a {
+	margin-bottom:-3px;
+	margin-right:15px;
+	float:right;
+	padding:3px 6px;
+	color:#834300;
+	text-decoration:none;
+	font-weight:normal;
+	border:1px solid #ffedae;
+	background-color:#fff;
+	}
+#WhisperUsername,
+#WhisperAutoCompleteResults {
+	width: 200px;
+	}
+#Form textarea,
+#Form input,
+#Form select {
+	font-family:'Trebuchet MS', 'Verdana', 'Tahoma', 'Arial', sans-serif;
+	font-size:13px;
+	font-weight: normal;
+	}	
+#Form textarea {
+	width:99.5%;
+	height:150px;
+	}
+#Form textarea.SmallCommentBox {
+	height: 150px;
+	}
+#Form textarea.LargeCommentBox {
+	height: 400px;
+	}
+#Form .Button {
+	cursor: pointer;
+	color: #000 !important;
+	}
+#Form .Button.SubmitButton {
+	margin-right:10px;
+	}
+
+/* Add Comment & Start Discussion Forms */
+
+#Form.StartDiscussion legend {
+	padding-top: 0px;
+	}
+#PostPage #Form.AddComments legend {
+	padding-top: 0px;
+	}
+.AddComments {
+	width: 99%;
+	}
+#Form.AddComments {
+	width: 100%;
+	}	
+#Form.AddComments fieldset {
+	margin: 0px;
+	}
+#Form.AddComments form {
+	margin-top: 0px !important;
+	}
+#Form.StartDiscussion label, 
+#Form.AddComments label {
+	display:block;
+	width:100%;
+	color:#834300;
+	font-weight:bold;
+	}
+#Form.StartDiscussion label.Radio,
+#Form.AddComments label.Radio {
+	display:inline !important;
+	width:auto !important;
+	}
+#Form.AddComments {
+	margin: 0px 0px 4px 0px;
+	padding: 4px 0px 0px 0px;
+	}
+#PostPage #Form.AddComments {
+	padding: 0px;
+	}
+.DiscussionBox {
+	width: 400px;
+	}	
+#Form .Button {
+	width: auto !important;
+	}
+#Form.AddComments a,
+#Form.StartDiscussion a {
+	font-weight: normal;
+	}
+#CommentFormats input {
+	margin: 0px 2px 0px 12px;
+	}
+#Form.StartDiscussion #CommentFormats label,
+#Form.AddComments #CommentFormats label {
+	font-weight: normal;
+	}
+/* Pad fatal errors on post page */
+#PostPage #Content {
+	padding-top: 20px !important;
+	}
+
+/* Account Section Forms.. */
+
+.Account {
+	padding-top:18px;
+	width:450px;
+	margin: 0px !important;
+	}
+#Form.Account * {
+	color:#84733d;
+	}
+#Form.Account legend {
+	color:#000;
+	}
+#Form.Account h2 {
+	font-size:14px;
+	margin-bottom:10px;
+	}
+#Form.Account p {
+	padding-bottom: 10px;
+	}
+#Form.Account ul p {
+	padding: 0px;
+	}
+#Form.Account label {
+	display:block;
+	width:80%;
+	line-height:18px;
+	margin-bottom: 4px;
+	}
+#Form.GlobalsForm label {
+	float: left;
+	}
+#Form.Extensions label {
+	width: 100%;
+	}
+#Form.Account .Description span label,
+#Form.Account label small {
+	font-weight:normal;
+	}
+#Form.Account input,
+#Form.Account select {
+	color:#000;
+	width:40%;
+	}
+#Form.GlobalsForm input,
+#Form.GlobalsForm select {
+	width: 59%;
+	}
+.Description {
+	margin:3px 0px !important;
+	padding: 3px 0px 5px 0px !important;
+	font-weight:normal;
+	}
+#Form.Account p span {
+	display:block;
+	margin-top:5px;
+	}
+#Form.Account p span label {
+	float:none;	
+	display:inline;
+	margin-left:5px;
+	font-weight:bold;
+	line-height:20px;
+	width:90%;
+	}
+#Form.Account p span input {
+	width:12px;
+	}
+#Form.Preferences p span label {
+	font-weight: normal;
+	}
+	
+/* Globals Form */
+  
+#Form.GlobalsForm select.SmallSelect {
+	font-size: 11px;
+	width: 50px;
+	}
+#Form.GlobalsForm #ForumOptions p span label {
+	font-weight: normal !important;
+	}
+#Form.GlobalsForm #ForumOptions {
+	margin-bottom: 20px;
+	}
+#Form.GlobalsForm p {
+	margin-bottom: 10px;
+	}
+	
+/* Update Check form */
+  
+#Form.UpdateCheck p.Description {
+	padding: 0px !important;
+	margin: 0px 0px 10px 0px !important;
+	}  
+  
+/* RoleEdit Form */
+  
+#Form.RoleEditForm li p span label {
+	font-weight: normal !important;
+	}
+
+/* Category List */
+#Form.CategoryList li.RoleBlocked {
+	background: url(disabled-tile.gif) #F4F4C2;
+	}
+	
+/* Category Form */
+#Form.CategoryForm li p span label {
+	font-weight: normal !important;
+	}
+  
+  
+
+/* Custom form for extensions management screen */
+
+#Form.Extensions {
+	margin: 0px 0px 20px 0px !important;
+	}
+div.Extensions ul {
+	border:1px solid #ddd;
+	border-bottom:0px;
+	margin: 10px 0px 20px 0px !important;
+	}
+div.Extensions ul {
+	background-color:#fffeec;
+	}
+div.Extensions ul li { 
+	border-bottom:1px solid #ddd;
+	margin:0px !important;
+	padding:10px !important;
+	overflow: hidden;
+	}
+div.Extensions ul li.Enabled {
+	background: #FEFECB;
+	}
+div.Extensions ul li.Disabled {
+	background: url(disabled-tile.gif) #F4F4C2;
+	}
+div.Extensions ul li.Processing {
+	background: #FEFECB;
+	}
+div.Extensions ul li.Processing label {
+	background: url(progress.gif) no-repeat center left;
+	}
+div.Extensions ul li.Processing input {
+	display: none;
+	}
+div.Extensions ul li.Processing * {
+	color: #B9AB7E !important;
+	}
+div.Extensions h3 {
+	font-size:13px;
+	color:#000 !important;
+	}
+div.Extensions h3 label {
+	display: inline !important;
+	padding-left: 30px !important;
+	}
+div.Extensions ul li input {
+	width: auto !important;
+	margin-top: 3px !important;
+	left: 260px;
+	position: absolute;
+	}
+div.Extensions h3 a {
+	color:#1EB136 !important;
+	text-decoration: none;
+	}
+div.Extensions h3 a:hover {
+	text-decoration: underline;
+	}
+div.Extensions ul li span,
+div.Extensions ul li span * {
+	font-size: 12px;
+	font-weight: normal;
+	z-index: 1;
+	}
+div.Extensions ul li span {
+	margin-left: 10px !important;
+	}
+div.Extensions .Version {
+	font-weight: bold;
+	margin-left: 5px !important;
+	}
+div.Extensions ul li p {
+	padding-left:30px !important;
+	color:#000 !important;
+	font-weight:normal;
+	}
+div.Extensions ul li p a {
+	color:#335eb7 !important;
+	text-decoration: none;
+	}
+div.Extensions ul li p a:hover {
+	color:#062971 !important;
+	text-decoration: underline;
+	}
+
+/* Custom form for sortable list */
+
+  
+.SortList {
+	background-color: #ffc;
+	border: 1px solid #ddd;
+	border-top: 0px;
+	}
+.MovableSortListItem {
+	cursor: move;
+	}
+.SortListItem {
+	border-top: 1px solid #ddd;
+	padding: 6px !important;
+	margin: 0px !important;
+	position: relative;    /* set item to relative for IE6 */
+	}
+.SortListOptions {
+	float: right !important;       /* float for modern browsers - no need to clear this float */
+	float: none;                   /* no float for IE6 */
+	position: relative !important; /* realtive positioning for modern browsers */
+	position: absolute;            /* absolute positioning for IE6 */
+	right: auto !important;         /* no right positioning for modern browsers */
+	right: 20px;                   /* right positioning for IE6 */
+	}
+.SortEdit, .SortEdit:link, .SortEdit:active, .SortEdit:visited {
+	color: #1eb136 !important;
+	font-weight: normal !important;
+	text-decoration: none !important;
+	}
+.SortEdit:hover {
+	color: #393;
+	text-decoration: underline;
+	}
+.SortRemove {
+	background: url(btn.remove.gif) no-repeat center right;
+	text-decoration: none;
+	margin-left: 10px !important;
+	padding-left: 15px !important;
+	}
+.SortNoRemove {
+	text-decoration: none;
+	margin-left: 10px !important;
+	padding-left: 15px !important;
+	}
+
+/* */
+
+#CustomInfo li {
+	width:50%;
+	float:left;
+	}
+#CustomInfo li input {
+	width:80% !important;
+	}
+.Submit {
+	margin:20px 0px !important;
+	text-align:right;
+	}
+.Submit input {
+	width: auto !important;
+	float:left;
+	cursor:pointer;
+	}
+.Submit a {
+	color: #f60 !important;
+	}
+
+/* Profile Page.. */
+
+#AccountProfile #Success,
+#AccountProfile .ErrorContainer {
+	margin-right: 18px;
+	}
+#AccountProfile .ErrorContainer {
+	margin-bottom: 10px;
+	border-bottom: 1px solid #FFC2CA;
+	}
+#AccountProfile {
+	float:left;
+	width:300px;
+	border-right:1px solid #ccc;
+	}
+#AccountProfile * {
+	margin:0px;
+	padding:0px;
+	list-style:none;
+	}
+#AccountProfile li {
+	clear:both;
+	margin-right:20px;
+	line-height:18px;
+	}
+#AccountProfile h3 {
+	font-size:12px;
+	width:44%;
+	float:left;
+	}
+#AccountProfile p {
+	float:left;
+	width:55%;
+	}
+#AccountProfile h2 {
+	font-size:14px;
+	color:#000;
+	width:60%;
+	float:left;
+	}
+#AccountProfile .ProfileTitle * {
+	line-height:32px;
+	}
+#AccountProfile .Tagline {
+	padding: 6px;
+	text-align: center;
+	border-top: 1px solid #D9999A;
+	border-bottom: 1px solid #D9999A;
+	background: #FEE1E1;
+	color: #850406 !important;
+	margin: 0px 20px 10px 0px;
+	}
+.ProfileTitleIcon {
+	background-repeat:no-repeat;
+	}
+.ProfileTitle h2 {
+	width:48% !important;
+	}
+.ProfileTitle.WithIcon h2 {
+	padding-left:4px !important;
+	width: auto;
+	}
+.ProfileTitle.WithIcon .ProfileIcon {
+	padding:8px 0px 8px 30px;
+	background: #fff no-repeat center center;
+	margin-right: 6px;
+	display: inline;
+	float: left;
+	width: 32px;
+	}	
+#AccountProfile .ProfileTitle p {
+	width:auto;
+	float: right;
+	text-align:right;
+	font-size:11px;
+	color:#aaa;
+	}
+#AccountProfile .ProfileTitle {
+	line-height:20px;
+	margin-bottom:10px;
+	}
+#AccountProfile .Picture {
+	width: 280px;
+	height: 200px;
+	overflow: hidden;
+	background: center center no-repeat;
+	margin-bottom: 6px;
+	}
+#AccountHistory {
+	margin-left:320px;
+	}
+html>body #AccountHistory { /* ugly hack, but fixes display error in IE. */
+	margin-left:300px !important;
+	}
+#AccountHistory * {
+	margin:0px;
+	padding:0px;
+	list-style:none;
+	color:#999;
+	}
+#AccountHistory ul, #AccountHistory h2 {
+	margin:0px 20px;
+	}
+#AccountHistory ul {
+	margin-bottom:20px;
+	}
+#AccountHistory h2 {
+	font-size:14px;
+	color:#000;
+	}
+#AccountHistory ul {
+	border-top:1px solid #ccc;
+	}
+#AccountHistory li {
+	padding:5px;
+	border-bottom:1px solid #ccc;
+	}
+#AccountHistory h3,
+#AccountHistory h3 a {
+	color:#666;
+	font-size:12px;
+	}
+#AccountHistory h3 small {
+	font-size:11px;
+	}
+#AccountHistory p {
+	font-size:11px;
+	}
+#AccountHistory p.Note {
+	padding:3px;
+	padding-bottom:0px;
+	font-style:italic;
+	}
+	
+/* Settings Home */
+  
+#Form.Help legend {
+	padding-top: 22px !important;
+	}
+#Form.Help form {
+	width: 450px !important;
+	margin: 0px;
+	padding: 0px;
+	}
+#SettingsPage #Form.Help p.Description {
+	padding: 10px !important;
+	color:#84733d !important;
+	}
+#SettingsPage #Content dl * {
+	margin:0px;
+	padding:0px;
+	color: #84733d;
+	font-size:12px;
+	}
+#SettingsPage #Content dl dt {
+	margin: 10px 10px;
+	font-weight:bold;
+	font-size:14px;
+	}
+#SettingsPage #Content dl dd {
+	margin:10px;
+	}
+.WhisperFrom {
+	background-color:#fefceb;
+	}
+.WhisperTo {
+	background-color:#feebfa;
+	}
+.left {
+	float:left;
+	}
+.hiLite {
+	background-color:#ff9;
+	font-style:normal;
+	}
+
+/* Autocomplete results */
+  
+.AutoCompleteContainer {
+	margin: 0px;
+	padding: 0px;
+	border: 1px solid #888;
+	border-top: 0px;
+	}
+.AutoCompleteContainer td {
+	padding: 3px;
+	cursor: pointer;
+	}
+.AutoCompleteRow td {
+	background: #fff;
+	color: #000000;
+	}
+.AutoCompleteHoverRow td {
+	background: #335EA8;
+	color: #fff;
+	}
+	
+/* Ajax progress */
+.HideProgress {
+	background: url(hprogress.gif) center center no-repeat;
+	text-decoration: none !important;
+	padding-left: 15px;
+	padding-right: 15px;
+	}
+.Progress {
+	background: url(hprogress.gif) left center no-repeat;
+	padding-left: 22px !important;
+	}
+.PreferenceProgress {
+	background: url(hprogress.gif) left center no-repeat;
+	padding-left: 16px !important;
+	}
+.Complete,
+.PreferenceComplete {
+	background: none;
+	padding-left: 0px;
+	}
+.PreferenceProgress input {
+	display: none;
+	}
+.PreferenceComplete input {
+	display: inline;
+	}
+
+/* IE Rendering Fixes */
+  
+#Body, #Form h2, #Form p {height: 1%;}
+
+/* Thank you positioniseverything.com*/
+
+.clearfix:after {
+	content:".";
+	display:block;
+	height:0;
+	clear:both;
+	visibility:hidden;
+	}
+.clearfix {
+	display:inline-table;
+	}
+	
+/* Hides from IE-mac \*/
+  
+* html .clearfix {
+	height:1%;
+	}
+.clearfix {
+	display:block;
+	}
+	
+/* End hide from IE-mac */
+					
